@@ -3,7 +3,7 @@ name: RDP Deployment Workflow
 on:
   push:
     branches:
-      - main  # Trigger the workflow on push to the main branch
+      - main  # Trigger this workflow on push to the main branch
 
 jobs:
   deploy:
@@ -41,10 +41,14 @@ jobs:
         env:
           RDP_USERNAME: ${{ secrets.RDP USERNAME }}
           RDP_PASSWORD: ${{ secrets.RDP PASSWORD }}
-          # Use secrets for sensitive information
 
       - name: Print environment variables
         run: |
           echo "Node version: $(node -v)"
           echo "Git SHA: $(git rev-parse --short HEAD)"
           # Print environment details for debugging
+
+      - name: Run RDP-related tasks (Optional)
+        run: |
+          echo "Running RDP-related tasks..."
+          # Replace with your actual RDP-related commands or scripts
