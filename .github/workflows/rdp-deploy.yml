@@ -3,7 +3,7 @@ name: RDP Deployment Workflow
 on:
   push:
     branches:
-      - main  # Trigger this workflow on push to the main branch
+      - main  # Trigger the workflow on push to the main branch
 
 jobs:
   deploy:
@@ -18,11 +18,11 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '14'  # Specify the Node.js version you need
+          node-version: '14'  # Specify the Node.js version needed
 
       - name: Install dependencies
         run: npm install
-        # This installs the dependencies listed in package.json
+        # Install dependencies listed in package.json
 
       - name: Build application
         run: |
@@ -31,8 +31,7 @@ jobs:
 
       - name: List build directory
         run: |
-          ls -la
-          # List the contents of the current directory to debug build artifacts
+          dir  # Windows command to list directory contents for debugging
 
       - name: Deploy application
         run: |
@@ -49,8 +48,3 @@ jobs:
           echo "Node version: $(node -v)"
           echo "Git SHA: $(git rev-parse --short HEAD)"
           # Print environment details for debugging
-
-      - name: Run RDP-related tasks (Optional)
-        run: |
-          echo "Running RDP-related tasks..."
-          # Replace with your actual RDP-related commands or scripts
